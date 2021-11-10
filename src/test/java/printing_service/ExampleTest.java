@@ -22,7 +22,10 @@ public class ExampleTest {
 
     @Test
     public void testUntestedSideEffect(){
-        //TODO
+        Example e = new Example();
+
+        Assertions.assertEquals(0,e.getAndIncrementInner());
+        Assertions.assertEquals(1, e.getInner());
     }
 
 
@@ -34,7 +37,7 @@ public class ExampleTest {
 
     @Test
     public void testMissingBoundary(){
-        //TODO
+        Assertions.assertEquals("COLD", Example.horOrCold(20));
     }
 
     @Test
@@ -52,6 +55,12 @@ public class ExampleTest {
 
     @Test
     public void testMyopicMockist(){
-        //TODO
+        Example e = new Example();
+
+        e.incrementInner();
+        Assertions.assertEquals(1, e.getInner());
+        Assertions.assertEquals(1, Example.otherObject(e, true));
+        Assertions.assertEquals(200, Example.otherObject(e, false));
+
     }
 }
